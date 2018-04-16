@@ -1,0 +1,18 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="IRYelpPrj:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/IRYelpPrj_war_exploded</output-path>
+    <root id="root">
+      <element id="javaee-facet-resources" facet="IRYelpPrj/web/Web" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="IRYelpPrj" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="JSF" />
+          <element id="library" level="project" name="JsonProcessing" />
+          <element id="library" level="project" name="Lucene7.2.1" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>

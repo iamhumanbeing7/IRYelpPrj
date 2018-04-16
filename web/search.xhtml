@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>
+            IR Yelp Project Search Engine
+        </title>
+    </h:head>
+
+    <h:body>
+        <f:view>
+            <h2>
+                IR Yelp Search Engine
+            </h2>
+            <p>
+                <h:form id = "yelpsearch">
+                    <p>
+                        Select Document Field
+                    </p>
+                    <h:selectOneMenu id = "iField" value = "#{searchResultBean.sField}">
+                        <f:selectItem itemLabel="Review Text" itemValue="text"/>
+                    </h:selectOneMenu>
+                    <p>
+                        Enter keyword
+                    </p>
+                    <h:inputText id = "iKeyword" value = "#{searchResultBean.sKeywords}"/>
+                    <p>
+                        Enter # of results
+                    </p>
+                    <h:inputText id = "iNumHits" value = "#{searchResultBean.intHits}"/>
+                    <br/>
+                    <br/>
+                    <h:commandButton action = "#{searchResultBean.search}" value ="Search"/>
+                    <br/>
+                    <br/>
+                    <p>
+                        Search Results: (#{searchResultBean.searchResultDocList.size()})
+                    </p>
+
+                    <h:dataTable value = "#{searchResultBean.searchResultDocList}" var = "SearchResultDoc" border="1">
+                        <h:column>
+                            <f:facet name="header"> Document ID </f:facet>
+                            #{SearchResultDoc.intDocID}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Review ID </f:facet>
+                            #{SearchResultDoc.sReview_id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> User ID </f:facet>
+                            #{SearchResultDoc.sUser_id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Business ID </f:facet>
+                            #{SearchResultDoc.sBusiness_id}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Date </f:facet>
+                            #{SearchResultDoc.sDate}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Review Text Content </f:facet>
+                            #{SearchResultDoc.sReview_Text}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Useful </f:facet>
+                            #{SearchResultDoc.intUseful}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Funny </f:facet>
+                            #{SearchResultDoc.intFunny}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Cool </f:facet>
+                            #{SearchResultDoc.intCool}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Stars </f:facet>
+                            #{SearchResultDoc.intStars}
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header"> Document Score </f:facet>
+                            #{SearchResultDoc.fltDocSearchScore}
+                        </h:column>
+                    </h:dataTable>
+                </h:form>
+            </p>
+        </f:view>
+
+    </h:body>
+</html>

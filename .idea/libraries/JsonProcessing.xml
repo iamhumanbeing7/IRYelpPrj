@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="JsonProcessing" type="JsonProcessing">
+    <CLASSES>
+      <root url="jar://C:/Java/json-20180130.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

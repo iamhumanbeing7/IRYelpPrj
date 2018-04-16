@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="JSF" type="jsf">
+    <CLASSES>
+      <root url="jar://C:/Java/JSF/jsf-api-2.2.8-26.jar!/" />
+      <root url="jar://C:/Java/JSF/jsf-impl-2.2.8-26.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
