@@ -21,7 +21,7 @@ public class mngdbaccess {
                 while(mdCursor.hasNext()) {
                     Document docObject = mdCursor.next();
                     ArrayList bzCategories = (ArrayList)docObject.get("categories");
-                    System.out.println(bzCategories.size());
+                    //System.out.println(bzCategories.size());
                     System.out.println(bzCategories.toString());
                     System.out.println(bzCategories.get(1));
                     break;
