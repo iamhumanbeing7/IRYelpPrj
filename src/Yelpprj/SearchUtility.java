@@ -3,6 +3,8 @@ package Yelpprj;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
+import org.apache.lucene.queryparser.classic.ParseException;
+import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
 import org.apache.lucene.util.QueryBuilder;
@@ -38,11 +40,13 @@ public class SearchUtility {
 
         //the query has to be analyzed the same way as the documents being index
         //using the same Analyzer
-        QueryBuilder builder = new QueryBuilder(new StandardAnalyzer());
-        Query query = builder.createBooleanQuery(field, keywords);
+//        QueryBuilder builder = new QueryBuilder(new StandardAnalyzer());
+
         ScoreDoc[] hits = null;
         List<searchResultDoc> lsrdReturn = new ArrayList<>();
         try {
+            QueryParser parser = new QueryParser(field, new StandardAnalyzer());
+            Query query = parser.parse(keywords);
             //Create a TopScoreDocCollector
             TopScoreDocCollector collector = TopScoreDocCollector.create(numHits);
 
@@ -71,6 +75,8 @@ public class SearchUtility {
                     e.printStackTrace();
                 }
             }
+        } catch (ParseException pe){
+            pe.printStackTrace();
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

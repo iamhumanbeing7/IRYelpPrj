@@ -45,7 +45,7 @@ public class searchResultBean implements Serializable {
 
     public void search (){
         SearchUtility suVar = new SearchUtility();
-        this.searchResultDocList = suVar.search(sField, sKeywords, ConstantSet.numHits);
+        this.searchResultDocList = suVar.search(sField, sKeywords, intHits);
     }
 
     public List<searchResultDoc> getSearchResultDocList() {

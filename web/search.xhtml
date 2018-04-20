@@ -30,9 +30,15 @@
                     </p>
                     <h:inputText id = "iKeyword" value = "#{searchResultBean.sKeywords}"/>
                     <p>
-                        Enter # of results
+                        Select # of results
                     </p>
-                    <h:inputText id = "iNumHits" value = "#{searchResultBean.intHits}"/>
+                    <h:selectOneMenu id = "iNumHits" value = "#{searchResultBean.intHits}">
+                        <f:selectItem itemLabel="10" itemValue="10"/>
+                        <f:selectItem itemLabel="20" itemValue="20"/>
+                        <f:selectItem itemLabel="30" itemValue="30"/>
+                        <f:selectItem itemLabel="50" itemValue="50"/>
+                        <f:selectItem itemLabel="100" itemValue="100"/>
+                    </h:selectOneMenu>
                     <br/>
                     <br/>
                     <h:commandButton action = "#{searchResultBean.search}" value ="Search"/>
@@ -43,27 +49,19 @@
                     </p>
 
                     <h:dataTable value = "#{searchResultBean.searchResultDocList}" var = "SearchResultDoc" border="1">
-                        <h:column>
-                            <f:facet name="header"> Document ID </f:facet>
-                            #{SearchResultDoc.intDocID}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> Review ID </f:facet>
-                            #{SearchResultDoc.sReview_id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> User ID </f:facet>
-                            #{SearchResultDoc.sUser_id}
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header"> Business ID </f:facet>
-                            #{SearchResultDoc.sBusiness_id}
+                        <h:column style = "width: 50px;">
+                            <f:facet name="header"> ID </f:facet>
+                            DocumentID - #{SearchResultDoc.sReview_id}
+                            <br/>
+                            UserID - #{SearchResultDoc.sUser_id}
+                            <br/>
+                            BusinessID - #{SearchResultDoc.sBusiness_id}
                         </h:column>
                         <h:column>
                             <f:facet name="header"> Date </f:facet>
                             #{SearchResultDoc.sDate}
                         </h:column>
-                        <h:column>
+                        <h:column style = "width: 50px;">
                             <f:facet name="header"> Review Text Content </f:facet>
                             #{SearchResultDoc.sReview_Text}
                         </h:column>
