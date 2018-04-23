@@ -1,4 +1,5 @@
 package beans;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +17,9 @@ import javax.faces.bean.SessionScoped;
 public class searchResultBean implements Serializable {
 
     private List<searchResultDoc> searchResultDocList = new ArrayList<>();
-    private String sField, sKeywords;
+    private String sField, sKeywords, sSimilarity;
+
+
     private int intHits;
 
     public String getsField() {
@@ -43,8 +46,16 @@ public class searchResultBean implements Serializable {
         this.intHits = intHits;
     }
 
-    public void search (){
-        SearchUtility suVar = new SearchUtility();
+    public String getsSimilarity() {
+        return sSimilarity;
+    }
+
+    public void setsSimilarity(String sSimilarity) {
+        this.sSimilarity = sSimilarity;
+    }
+
+    public void search() {
+        SearchUtility suVar = new SearchUtility(this.sSimilarity);
         this.searchResultDocList = suVar.search(sField, sKeywords, intHits);
     }
 

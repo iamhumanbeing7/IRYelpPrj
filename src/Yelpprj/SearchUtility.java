@@ -5,12 +5,13 @@ import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
+import org.apache.lucene.search.similarities.*;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.FSDirectory;
-import org.apache.lucene.util.QueryBuilder;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.String;
 
 import beans.searchResultDoc;
 import Yelpprj.ConstantSet;
@@ -20,11 +21,21 @@ public class SearchUtility {
     private IndexSearcher idxSearcher;
     private IndexReader idxReader;
 
-    public SearchUtility() {
+    public SearchUtility(String sSimilarity) {
         try {
             //create an index reader and index searcher
             idxReader = DirectoryReader.open(FSDirectory.open(Paths.get(ConstantSet.INDEX_Directory)));
             idxSearcher = new IndexSearcher(idxReader);
+            System.out.println("Similarity is: "+sSimilarity);
+            if(sSimilarity != null && !sSimilarity.isEmpty()){
+                if(sSimilarity.equals("BM25")){
+                    idxSearcher.setSimilarity(new BM25Similarity());
+                } else if(sSimilarity.equals("DFR")){
+                    idxSearcher.setSimilarity(new DFRSimilarity(new BasicModelD(), new AfterEffectB(), new NormalizationH1()));
+                } else if(sSimilarity.equals("BL")){
+                    idxSearcher.setSimilarity(new BooleanSimilarity());
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
